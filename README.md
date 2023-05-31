@@ -1,5 +1,5 @@
 <h1 align="center">
-  Godork - Fast Google dork scanner tool
+  Godork - Scrape Google search quickly
 </h1>
 
 <h1 align="center">
@@ -26,7 +26,7 @@
 
  - Simple and modular code base making it easy to contribute.
  - Fast scanner
- - Can scrape Google search titles and links quickly
+ - Scrape Google search titles and links quickly
 
 # Installation Instructions
 
@@ -55,7 +55,7 @@ This will display help for the tool. Here are all the switches it supports.
 
 usage: godork.py [ --query [default arguments] ] [ arguments ]
 
-fast Google dork scanner tool
+scrape Google search quickly
 
 Options:
   -h, --help            show this help message and exit
