@@ -54,7 +54,7 @@ class OptionsArgs:
             "--page",
             type=int,
             action="store",
-            default=0,
+            default=1,
             help="specify number of pages"
         )
         self.parser.add_argument(
