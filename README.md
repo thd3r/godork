@@ -26,6 +26,11 @@
 
 # Features
 
+<h1 align="center">
+  <img src="https://raw.githubusercontent.com/thd3r/godork/main/static/godork-run.png" alt="godork" width="700px">
+  <br>
+</h1>
+
  - Simple and modular code base making it easy to contribute.
  - Fast scanner
  - Scrape Google search titles and links quickly
