@@ -22,6 +22,8 @@
   <a href="https://github.com/thd3r">Follow me</a>
 </p>
 
+`godork` can scrape results from google searches quickly by using the [asyncio](https://docs.python.org/3/library/asyncio.html) library which uses **cooperative multitasking** in combination with [aiohttp](https://docs.aiohttp.org)
+
 # Features
 
  - Simple and modular code base making it easy to contribute.
@@ -78,3 +80,5 @@ It will run its tool to scrape titles and links from google search
 ```console
 comming soon
 ```
+
+# Notes
