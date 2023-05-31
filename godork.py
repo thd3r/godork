@@ -37,7 +37,7 @@ class OptionsArgs:
     
     def __init__(self) -> None:
         self.parser = ArgumentParser(
-            prog="Pydork",
+            prog="godork",
             usage=f"{argv[0]} [ --query [default arguments] ] [ arguments ]"
         )
         self.parser._optionals.title = "Options"
@@ -72,7 +72,7 @@ class OptionsArgs:
             "-o",
             "--output",
             action="store",
-            default="pydork",
+            default="godork",
             help="write output in JSONL(ines) format"
         )
 
@@ -170,7 +170,7 @@ class Googledork:
         link = [x['links'] for x in self.data]
         print(f"[\033[94mINF\033[0m] Found {len(link)} links for {self.query} querys in {round(time.time() - self.start_time)} seconds")
 
-class Pydork(object):
+class Godork(object):
 
     def __init__(self) -> None:
         self.engine = "Google"
@@ -206,5 +206,5 @@ class Pydork(object):
         asyncio.run(godork.run())
 
 if __name__ == '__main__':
-    pydork = Pydork()
-    pydork.run()
+    godork = Godork()
+    godork.run()
