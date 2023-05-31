@@ -72,8 +72,7 @@ Options:
   --hl HL               language
   --gl GL               country of the search
   -o OUTPUT, --output OUTPUT
-                        write output in JSONL(ines) format
-                        
+                        write output in JSONL(ines) format  
 ```
 
 # Running godork
