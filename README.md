@@ -4,7 +4,6 @@
 
 <div align="center">
   <img src="assets/images/godork-logo.png" alt="godork" width="300px">
-  <br>
 </div>
 
 <div align="center">
