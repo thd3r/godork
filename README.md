@@ -7,7 +7,7 @@
   <br>
 </div>
 
-<p align="center">
+<div align="center">
   <a href="https://python.org">
     <img src="https://img.shields.io/badge/Built%20with-Python-Blue">
   </a>
@@ -26,7 +26,7 @@
   <a href="https://github.com/thd3r/godork/issues">
     <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat">
   </a>
-</p>
+</div>
 
 # About
 
