@@ -15,7 +15,7 @@ import time
 import json
 import os
 
-__version__ = "1.2.0"
+__version__ = "1.2.1"
 
 class OptionsArgs(object):
     
