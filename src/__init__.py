@@ -1,0 +1,1 @@
+from src.godork import main
