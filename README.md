@@ -3,7 +3,7 @@
 </h1>
 
 <div align="center">
-  <img src="assets/images/godork-logo.png" alt="godork" width="300px">
+  <img src="https://raw.githubusercontent.com/thd3r/godork/master/assets/images/godork-logo.png" alt="godork" width="300px">
 </div>
 
 <div align="center">
