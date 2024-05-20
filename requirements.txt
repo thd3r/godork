@@ -1,4 +1,0 @@
-aiohttp
-asyncio
-requests
-bs4
