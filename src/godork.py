@@ -15,7 +15,7 @@ import time
 import json
 import os
 
-__version__ = "1.2.3"
+__version__ = "1.2.4"
 
 class OptionsArgs(object):
     
@@ -61,10 +61,11 @@ class OptionsArgs(object):
 class Output(object):
 
     def __init__(self):
+        self.dirs = f"{gettempdir()}/godork/output/"
         try:
-            self.dirs = os.makedirs(f"{gettempdir()}/godork/output/")
+            os.makedirs(self.dirs)
         except FileExistsError:
-            self.dirs = f"{gettempdir()}/godork/output/"
+            self.dirs = self.dirs
 
     def write_json(self, data):
         filename = f"{self.dirs}{str(datetime.now().strftime('%Y-%m-%d-%H:%M:%S'))}_godork.json"
