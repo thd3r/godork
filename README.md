@@ -3,7 +3,7 @@
 </h1>
 
 <div align="center">
-  <img src="assets/images/godork-logo.png" alt="godork" width="300px">
+  <img src="https://raw.githubusercontent.com/thd3r/godork/master/assets/images/godork-logo.png" alt="godork" width="300px">
 </div>
 
 <div align="center">
@@ -12,16 +12,18 @@
   <a href="https://github.com/thd3r/godork/releases"><img src="https://img.shields.io/github/release/thd3r/godork.svg"></a>
   <a href="https://pypi.python.org/pypi/godork/"><img src="https://img.shields.io/pypi/v/godork.svg"></a>
   <a href="https://github.com/thd3r/godork/issues?q=is%3Aissue+is%3Aclosed"><img src="https://img.shields.io/github/issues-closed-raw/thd3r/godork?color=dark-green&label=issues%20fixed"></a>
-  <a href="https://github.com/thd3r/godork/tree/dev?tab=readme-ov-file#contributing"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat"></a>
+  <a href="https://github.com/thd3r/godork/tree/master?tab=readme-ov-file#contributing"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat"></a>
 </div>
 
 # About
 
-**godork** can scrape results from google searches quickly by using the [asyncio](https://docs.python.org/3/library/asyncio.html) library which uses **cooperative multitasking** in combination with [aiohttp](https://docs.aiohttp.org) and with this tool you can extract links including their titles. This tool is also able to bypass prohibitions made by providers
+**Godork** can scrape results from google searches quickly by using the [asyncio](https://docs.python.org/3/library/asyncio.html) library which uses cooperative multitasking in combination with [aiohttp](https://docs.aiohttp.org) and with this tool you can extract links including their titles. This tool is also able to bypass prohibitions made by providers
 
 # Installation
 
-### **godork** requires **python 3.8** or higher to install successfully. Run the following command to get the repo:
+**Godork** requires **python 3.8** or higher to install successfully
+
+### Using Github repo
 
 ```sh
 git clone https://github.com/thd3r/godork.git && python3 setup.py install
@@ -30,7 +32,7 @@ git clone https://github.com/thd3r/godork.git && python3 setup.py install
 ### Using pip
 
 ```sh
-pip3 install godork
+pip install godork
 ```
 
 # Usage
@@ -48,7 +50,7 @@ python3 godork.py -help
  / _ `/ _ \/ _  / _ \/ __/  '_/
  \_, /\___/\_,_/\___/_/ /_/\_\ 
 /___/                                                                                                            
-        v1.2.0 - @thd3r
+        v1.2.3 - @thd3r
 
 usage: godork [ -query [default arguments] ] [ arguments ] 
 
@@ -66,7 +68,7 @@ Documentation is available at https://thd3r.github.io
 
 # Contributing
 
-Contributions are welcome! If you want to contribute to **godork** don't forget to Fork the repository
+Contributions are welcome! If you want to contribute to **Godork** don't forget to Fork the repository
 
 # Support
 

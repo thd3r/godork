@@ -15,7 +15,7 @@ import time
 import json
 import os
 
-__version__ = "1.2.2"
+__version__ = "1.2.3"
 
 class OptionsArgs(object):
     
@@ -129,14 +129,14 @@ class Dorks(Output):
         
     def get_data(self, response):
         for i, html in enumerate(response):
-            titles, links = self.get_title(html), self.get_links(i, html)
-            if titles and links:
-                for title in titles:
+            titles = self.get_title(html)
+            if titles:
+                for i, title in enumerate(titles):
                     self.data.append({
                         "title": title.getText(),
-                        "links": links
+                        "links": self.get_links(i, html)
                     })
-                    print(f"{title.getText()} [\033[92m{links}\033[0m]")
+                    print(f"{title.getText()} [\033[92m{self.get_links(i, html)}\033[0m]")
             else:
                 break
 
