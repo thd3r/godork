@@ -17,11 +17,13 @@
 
 # About
 
-**godork** can scrape results from google searches quickly by using the [asyncio](https://docs.python.org/3/library/asyncio.html) library which uses **cooperative multitasking** in combination with [aiohttp](https://docs.aiohttp.org) and with this tool you can extract links including their titles. This tool is also able to bypass prohibitions made by providers
+**Godork** can scrape results from google searches quickly by using the [asyncio](https://docs.python.org/3/library/asyncio.html) library which uses cooperative multitasking in combination with [aiohttp](https://docs.aiohttp.org) and with this tool you can extract links including their titles. This tool is also able to bypass prohibitions made by providers
 
 # Installation
 
-### **godork** requires **python 3.8** or higher to install successfully. Run the following command to get the repo:
+**Godork** requires **python 3.8** or higher to install successfully
+
+### Using Github repo
 
 ```sh
 git clone https://github.com/thd3r/godork.git && python3 setup.py install
@@ -30,7 +32,7 @@ git clone https://github.com/thd3r/godork.git && python3 setup.py install
 ### Using pip
 
 ```sh
-pip3 install godork
+pip install godork
 ```
 
 # Usage
@@ -48,7 +50,7 @@ python3 godork.py -help
  / _ `/ _ \/ _  / _ \/ __/  '_/
  \_, /\___/\_,_/\___/_/ /_/\_\ 
 /___/                                                                                                            
-        v1.2.0 - @thd3r
+        v1.2.3 - @thd3r
 
 usage: godork [ -query [default arguments] ] [ arguments ] 
 
@@ -66,7 +68,7 @@ Documentation is available at https://thd3r.github.io
 
 # Contributing
 
-Contributions are welcome! If you want to contribute to **godork** don't forget to Fork the repository
+Contributions are welcome! If you want to contribute to **Godork** don't forget to Fork the repository
 
 # Support
 
