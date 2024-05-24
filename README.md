@@ -38,7 +38,7 @@ pip install godork
 # Usage
 
 ```sh
-python3 godork.py -help
+python godork.py -help
 ```
 
 ### This will display help for the tool. Here are all the switches it supports.
