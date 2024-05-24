@@ -15,7 +15,7 @@
   <a href="https://github.com/thd3r/godork/tree/master?tab=readme-ov-file#contributing"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat"></a>
 </div>
 
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=thd3r&label=Views&color=0e75b6&style=flat" alt="thd3r"/> </p>
+  <img src="https://komarev.com/ghpvc/?username=thd3r&label=Views&color=0e75b6&style=flat" alt="thd3r"/>
 
 # About
 
