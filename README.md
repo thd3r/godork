@@ -15,8 +15,6 @@
   <a href="https://github.com/thd3r/godork/tree/master?tab=readme-ov-file#contributing"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat"></a>
 </div>
 
-  <img src="https://komarev.com/ghpvc/?username=thd3r&label=Views&color=0e75b6&style=flat" alt="thd3r"/>
-
 # About
 
 **Godork** can scrape results from google searches quickly by using the [asyncio](https://docs.python.org/3/library/asyncio.html) library which uses cooperative multitasking in combination with [aiohttp](https://docs.aiohttp.org) and with this tool you can extract links including their titles. This tool is also able to bypass prohibitions made by providers
