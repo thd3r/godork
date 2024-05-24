@@ -26,7 +26,7 @@
 ### Using Github repo
 
 ```sh
-git clone https://github.com/thd3r/godork.git && python3 setup.py install
+git clone https://github.com/thd3r/godork.git && python setup.py install
 ```
 
 ### Using pip
@@ -50,7 +50,7 @@ python3 godork.py -help
  / _ `/ _ \/ _  / _ \/ __/  '_/
  \_, /\___/\_,_/\___/_/ /_/\_\ 
 /___/                                                                                                            
-        v1.2.3 - @thd3r
+        v1.2.4 - @thd3r
 
 usage: godork [ -query [default arguments] ] [ arguments ] 
 
