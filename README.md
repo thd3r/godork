@@ -10,11 +10,11 @@
   <a href="https://github.com/thd3r/godork/issues?q=is%3Aissue+is%3Aclosed"><img src="https://img.shields.io/github/issues-closed-raw/thd3r/godork?color=dark-green&label=issues%20fixed"></a>
 </div>
 
-# About
+## About
 
 **Godork** is a tool that can quickly scrape Google search results using the [asyncio](https://docs.python.org/3/library/asyncio.html) library that uses cooperative multitasking combined with [aiohttp](https://docs.aiohttp.org) and with this tool you can extract links including their titles. This tool is also able to bypass the bans made by the provider
 
-# Installation
+## Installation
 
 **Godork** requires **python 3.8** or higher to install successfully
 
@@ -32,7 +32,7 @@ python3 setup.py install
 pip install godork
 ```
 
-# Usage
+## Usage
 
 ### This will display help for the tool. Here are all the switches it supports.
 
@@ -49,6 +49,6 @@ Options:
   -proxy PROXY  http proxy to use with godork (eg http://127.0.0.1:8080) 
 ```
 
-# Support
+## Support
 
 <a href="https://www.buymeacoffee.com/thd3r" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
