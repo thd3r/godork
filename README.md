@@ -26,9 +26,7 @@
 ### Using Github repo
 
 ```sh
-git clone https://github.com/thd3r/godork.git
-cd godork
-python setup.py install
+git clone https://github.com/thd3r/godork.git && python3 setup.py install
 ```
 
 ### Using pip
@@ -39,6 +37,10 @@ pip install godork
 
 # Usage
 
+```sh
+python3 godork.py -help
+```
+
 ### This will display help for the tool. Here are all the switches it supports.
 
 ```sh
@@ -46,6 +48,15 @@ python godork.py -help
 ```
 
 ```console
+                __         __  
+  ___ ____  ___/ /__  ____/ /__
+ / _ `/ _ \/ _  / _ \/ __/  '_/
+ \_, /\___/\_,_/\___/_/ /_/\_\ 
+/___/                                                                                                            
+        v1.2.3 - @thd3r
+
+usage: godork [ -query [default arguments] ] [ arguments ] 
+
 Options:
   -help         show this help message and exit
   -version      show program's version number and exit
