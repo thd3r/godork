@@ -15,7 +15,7 @@ import time
 import json
 import os
 
-__version__ = "1.2.4"
+__version__ = "1.2.5"
 
 class OptionsArgs(object):
     
@@ -108,7 +108,7 @@ class Dorks(Output):
         return random.choice(words).strip()
 
     def regexp(self, html):
-        return findall('"><a href="\/url\?q=(.*?)&amp;sa=U&amp;', html)
+        return findall(r'\"><a href=\"\/url\?q=(.*?)&amp', html)
 
     def params(self, q, p):
         return {
@@ -161,7 +161,7 @@ class Dorks(Output):
                 proxy=self.proxy,
                 allow_redirects=False,
                 headers={
-                    "User-Agent": f"{self.random_words()}/1.2.0",
+                    "User-Agent": f"{self.random_words()}/{__version__}",
                     "Referer": "https://www.google.com/"
                 },
                 ) as resp:

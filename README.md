@@ -17,7 +17,7 @@
 
 # About
 
-**Godork** can scrape results from google searches quickly by using the [asyncio](https://docs.python.org/3/library/asyncio.html) library which uses cooperative multitasking in combination with [aiohttp](https://docs.aiohttp.org) and with this tool you can extract links including their titles. This tool is also able to bypass prohibitions made by providers
+**Godork** is a tool that can quickly scrape Google search results using the [asyncio](https://docs.python.org/3/library/asyncio.html) library that uses cooperative multitasking combined with [aiohttp](https://docs.aiohttp.org) and with this tool you can extract links including their titles. This tool is also able to bypass the bans made by the provider
 
 # Installation
 
@@ -26,7 +26,7 @@
 ### Using Github repo
 
 ```sh
-git clone https://github.com/thd3r/godork.git && python setup.py install
+git clone https://github.com/thd3r/godork.git && python3 setup.py install
 ```
 
 ### Using pip
@@ -38,11 +38,14 @@ pip install godork
 # Usage
 
 ```sh
-python godork.py -help
+python3 godork.py -help
 ```
 
 ### This will display help for the tool. Here are all the switches it supports.
 
+```sh
+python godork.py -help
+```
 
 ```console
                 __         __  
@@ -50,7 +53,7 @@ python godork.py -help
  / _ `/ _ \/ _  / _ \/ __/  '_/
  \_, /\___/\_,_/\___/_/ /_/\_\ 
 /___/                                                                                                            
-        v1.2.4 - @thd3r
+        v1.2.3 - @thd3r
 
 usage: godork [ -query [default arguments] ] [ arguments ] 
 
