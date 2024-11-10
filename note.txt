@@ -1,0 +1,3 @@
+* ffmpeg (for pydub)
+* chromedriver setup (second, check version of google-driver using selenium if return False then download it manually and first, if google-chrome doesnt exits then install manual)
+* index out of range on `collect_data` (when print to the console)
