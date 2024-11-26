@@ -69,12 +69,12 @@ class GodorkBase:
         self.response_dict = {}
         self.log_time = str(datetime.now().strftime('%Y/%m/%d %H:%M:%S'))
 
-    def print_banner(self):
+    def print_banner(self, status):
         banner = f"""
                 __         __  
   ___ ____  ___/ /__  ____/ /__
- / _ `/ _ \/ _  / _ \/ __/  '_/
- \_, /\___/\_,_/\___/_/ /_/\_\ 
+ / _ `/ _ \/ _  / _ \/ __/  '_/  {self.current_version}
+ \_, /\___/\_,_/\___/_/ /_/\_\    {status}
 /___/                                                                                                            
         thd3r & societyprojects
 """
@@ -116,11 +116,11 @@ class GodorkBase:
     async def check_for_updates(self):
         release_version, _ = await self.release_version()
         if release_version is not None and self.current_version < release_version:
-            print(f"[{Bgcolors.BLUE}INF{Bgcolors.DEFAULT}] Current godork version {self.current_version} ({Bgcolors.RED}outdated{Bgcolors.DEFAULT})")
+            self.print_banner(status=f"{Bgcolors.RED}outdated{Bgcolors.DEFAULT}")
         if release_version is not None and self.current_version == release_version:
-            print(f"[{Bgcolors.BLUE}INF{Bgcolors.DEFAULT}] Current godork version {self.current_version} ({Bgcolors.GREEN}latest{Bgcolors.DEFAULT})")
+            self.print_banner(status=f"{Bgcolors.GREEN}latest{Bgcolors.DEFAULT}")
         if release_version is None:
-            print(f"[{Bgcolors.BLUE}INF{Bgcolors.DEFAULT}] Current godork version {self.current_version} ({Bgcolors.RED}outdated{Bgcolors.DEFAULT})")
+            self.print_banner(status=f"{Bgcolors.RED}outdated{Bgcolors.DEFAULT}")
 
     async def download_file_updates(self, **kwargs):
         try:
@@ -199,6 +199,11 @@ class GodorkService(GodorkBase):
             service = ChromeService(ChromeDriverManager().install())
             driver = webdriver.Chrome(service=service, options=self.chromeoptions(headless=self.headless))
             driver.set_page_load_timeout(10)
+            try:
+                self.log_print(status="info", msg=f"chromedriver detected in {driver.service.path}")
+            except:
+                self.log_print(status="error", msg=f"chromedriver not detected")
+                return
             return driver
         except Exception as err:
             raise Exception(err)
@@ -206,10 +211,12 @@ class GodorkService(GodorkBase):
     def chromeoptions(self, headless):
         options = ChromeOptions()
         if not headless:
+            options.add_argument("--no-sandbox")
             options.add_argument("--disable-extensions")
             options.add_argument("--disable-dev-shm-usage")
         else:
-            options.add_argument("--headless=new")
+            options.add_argument("--headless")
+            options.add_argument("--no-sandbox")
             options.add_argument("--disable-extensions")
             options.add_argument("--disable-dev-shm-usage")
 
@@ -419,7 +426,10 @@ class GodorkRunner(GodorkService):
             })
 
             for i, title in enumerate(titles):
-                print(f"{title} [{Bgcolors.GREEN}{links[i]}{Bgcolors.DEFAULT}]")
+                try:
+                    print(f"{title} [{Bgcolors.GREEN}{links[i]}{Bgcolors.DEFAULT}]")
+                except IndexError:
+                    pass
 
     def collect_data_from_driver(self, html, **kwargs):
         numpage = kwargs.get("numpage")
@@ -436,7 +446,10 @@ class GodorkRunner(GodorkService):
             })
 
             for i, title in enumerate(titles):
-                print(f"{title} [{Bgcolors.GREEN}{links[i]}{Bgcolors.DEFAULT}]")
+                try:
+                    print(f"{title} [{Bgcolors.GREEN}{links[i]}{Bgcolors.DEFAULT}]")
+                except IndexError:
+                    pass
 
     def no_data(self, html):
         try:
@@ -511,6 +524,7 @@ class GodorkRunner(GodorkService):
     async def run_with_async(self):
         await self.check_for_updates()
         
+        print(f"[{Bgcolors.GREEN}INF{Bgcolors.DEFAULT}] A fast tool to scrape every link and title from Google search results")
         print(f"[{Bgcolors.WARNING}WRN{Bgcolors.DEFAULT}] Use with caution. You are responsible for your actions")
         print(f"[{Bgcolors.WARNING}WRN{Bgcolors.DEFAULT}] Developers assume no liability and are not responsible for any issue or damage.")
 
@@ -557,7 +571,6 @@ def main():
     args = parser.parse_args()
 
     godork = GodorkRunner(dorks=args.dorks, proxy=args.proxy, headless=args.no_headless)
-    godork.print_banner()
 
     if args.update_tools:
         godork.update_tools()

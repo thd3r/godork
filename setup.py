@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-from src.godork import __version__
+from v2.__init__ import __version__
 
 setup(
     name='godork',
@@ -9,10 +9,14 @@ setup(
     description='Scrape Google search quickly',
     packages=find_packages(),
     install_requires=[
-        'aiohttp',
-        'asyncio',
-        'requests',
-        'bs4',
+        'bs4'
+        'rich'
+        'pydub'
+        'aiohttp'
+        'asyncio'
+        'selenium'
+        'SpeechRecognition'
+        'webdriver-manager'
     ],
     entry_points={
         'console_scripts': [
@@ -23,5 +27,5 @@ setup(
     url='https://github.com/thd3r/godork',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    keywords=['godork', 'google dorks', 'google dork', 'google dorking']
+    keywords=['godork', 'google dorks', 'google dorking']
 )
