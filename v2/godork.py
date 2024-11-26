@@ -64,7 +64,7 @@ class Bgcolors:
 class GodorkBase:
 
     def __init__(self):
-        self.current_version = "v2.0.0"
+        self.current_version = "v2.0.1"
 
         self.response_dict = {}
         self.log_time = str(datetime.now().strftime('%Y/%m/%d %H:%M:%S'))
@@ -540,7 +540,7 @@ def main():
         "-v",
         "--version",
         action="version",
-        version=f"%(prog)s 2.0.0",
+        version=f"%(prog)s 2.0.1",
     )
     parser.add_argument(
         "-d",
