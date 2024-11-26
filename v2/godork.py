@@ -64,7 +64,7 @@ class Bgcolors:
 class GodorkBase:
 
     def __init__(self):
-        self.current_version = "v2.0.1"
+        self.current_version = "v2.0.2"
 
         self.response_dict = {}
         self.log_time = str(datetime.now().strftime('%Y/%m/%d %H:%M:%S'))
@@ -524,7 +524,7 @@ class GodorkRunner(GodorkService):
     async def run_with_async(self):
         await self.check_for_updates()
         
-        print(f"[{Bgcolors.GREEN}INF{Bgcolors.DEFAULT}] A fast tool to scrape every link and title from Google search results")
+        print(f"[{Bgcolors.BLUE}INF{Bgcolors.DEFAULT}] A fast tool to scrape every link and title from google search results")
         print(f"[{Bgcolors.WARNING}WRN{Bgcolors.DEFAULT}] Use with caution. You are responsible for your actions")
         print(f"[{Bgcolors.WARNING}WRN{Bgcolors.DEFAULT}] Developers assume no liability and are not responsible for any issue or damage.")
 
@@ -540,7 +540,7 @@ def main():
         "-v",
         "--version",
         action="version",
-        version=f"%(prog)s 2.0.1",
+        version=f"%(prog)s 2.0.2",
     )
     parser.add_argument(
         "-d",
