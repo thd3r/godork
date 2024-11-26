@@ -1,3 +1,3 @@
 from src.godork import main
 
-__version__ = 'v2.0.0'
+__version__ = '2.0.0'
