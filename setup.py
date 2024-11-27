@@ -9,13 +9,13 @@ setup(
     description='Scrape Google search quickly',
     packages=find_packages(),
     install_requires=[
-        'bs4'
-        'rich'
-        'pydub'
-        'aiohttp'
-        'asyncio'
-        'selenium'
-        'SpeechRecognition'
+        'bs4',
+        'rich',
+        'pydub',
+        'aiohttp',
+        'asyncio',
+        'selenium',
+        'SpeechRecognition',
         'webdriver-manager'
     ],
     entry_points={
