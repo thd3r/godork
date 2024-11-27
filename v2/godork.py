@@ -111,7 +111,7 @@ class GodorkBase:
                 datajson = json.loads(self.response_dict["body"])
                 return datajson["tag_name"], datajson["body"]
             except:
-                return None, None
+                return self.current_version, None
 
     async def check_for_updates(self):
         release_version, _ = await self.release_version()
