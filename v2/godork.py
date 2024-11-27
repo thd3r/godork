@@ -199,11 +199,6 @@ class GodorkService(GodorkBase):
             service = ChromeService(ChromeDriverManager().install())
             driver = webdriver.Chrome(service=service, options=self.chromeoptions(headless=self.headless))
             driver.set_page_load_timeout(10)
-            try:
-                self.log_print(status="info", msg=f"chromedriver detected in {driver.service.path}")
-            except:
-                self.log_print(status="error", msg=f"chromedriver not detected")
-                return
             return driver
         except Exception as err:
             raise Exception(err)
@@ -512,14 +507,15 @@ class GodorkRunner(GodorkService):
                     self.log_print(status="error", msg=err)
                     break
 
-        self.reports(data={
-            "godork": {
-                "data": {
-                    "title": [self.data_output[i]["title"] for i in range(len(self.data_output))],
-                    "links": [self.data_output[i]["links"] for i in range(len(self.data_output))]
+        if len(self.data_output) > 0:
+            self.reports(data={
+                "godork": {
+                    "data": {
+                        "title": [self.data_output[i]["title"] for i in range(len(self.data_output))],
+                        "links": [self.data_output[i]["links"] for i in range(len(self.data_output))]
+                    }
                 }
-            }
-        })
+            })
 
     async def run_with_async(self):
         await self.check_for_updates()
