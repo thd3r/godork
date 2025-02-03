@@ -14,42 +14,23 @@ from datetime import datetime
 from tempfile import gettempdir
 from urllib.parse import urlparse, unquote, parse_qs
 
-try:
-    import pydub
-    import asyncio
-    import speech_recognition
+import pydub
+import asyncio
+import speech_recognition
 
-    from bs4 import BeautifulSoup
-    from rich.progress import Progress
-    from aiohttp import TCPConnector, ClientSession
+from bs4 import BeautifulSoup
+from rich.progress import Progress
+from aiohttp import TCPConnector, ClientSession
 
-    from selenium import webdriver
-    from selenium.webdriver import ChromeService
-    from selenium.webdriver import ChromeOptions
-    from webdriver_manager.chrome import ChromeDriverManager
-    from selenium.webdriver.common.by import By
-    from selenium.webdriver.common.keys import Keys
-    from selenium.webdriver.support.ui import WebDriverWait
-    from selenium.webdriver.support import expected_conditions as EC
-    from selenium.common.exceptions import TimeoutException
-except ImportError:
-    print(f"[\033[34mINF\033[0m] Downloading the required dependencies...")
-
-    required_packages = {
-        "bs4": "0.0.2",
-        "rich": "13.9.4",
-        "pydub": "0.25.1",
-        "aiohttp": "3.10.10",
-        "asyncio": "3.4.3",
-        "selenium": "4.26.1",
-        "SpeechRecognition": "3.11.0",
-        "webdriver-manager": "4.0.2"
-    }
-    
-    for package, version in required_packages.items():
-        subprocess.check_call([sys.executable, "-m", "pip", "install", f"{package}=={version}"])
-    
-    exit(0)
+from selenium import webdriver
+from selenium.webdriver import ChromeService
+from selenium.webdriver import ChromeOptions
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
 class Bgcolors:
 
