@@ -10,7 +10,6 @@ setup(
     packages=find_packages(),
     install_requires=[
         'bs4',
-        'rich',
         'pydub',
         'aiohttp',
         'asyncio',
