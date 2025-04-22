@@ -46,7 +46,7 @@ Usage Scenario:
 
 """
 
-CURRENT_VERSION = "v2.5.2"
+CURRENT_VERSION = "v2.5.3"
 
 def release_version():
     session = requests.session()
