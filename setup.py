@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-from services.version import CURRENT_VERSION
+from src.services.version import CURRENT_VERSION
 
 setup(
     name='godork',
@@ -21,7 +21,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'godork = godork:main'
+            'godork = src.godork:main'
         ]
     },
     license='MIT',
