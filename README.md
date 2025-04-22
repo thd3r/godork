@@ -1,5 +1,5 @@
 <h1 align="left">
-  Godork - Scrape Google search quickly
+  Godork - Advanced & Fast Google Dorking Tool
 </h1>
 
 <div align="left">
@@ -10,25 +10,40 @@
   <a href="https://github.com/thd3r/godork/issues?q=is%3Aissue+is%3Aclosed"><img src="https://img.shields.io/github/issues-closed-raw/thd3r/godork?color=dark-green&label=issues%20fixed"></a>
 </div>
 
-```
+```sh
                 __         __  
   ___ ____  ___/ /__  ____/ /__
- / _ `/ _ \/ _  / _ \/ __/  '_/  v2.0.0
+ / _ `/ _ \/ _  / _ \/ __/  '_/  v2.8.0
  \_, /\___/\_,_/\___/_/ /_/\_\    latest
 /___/                                                                                                            
-        thd3r & societyprojects
+           thd3r & societyprojects
 ```
 
-**Godork** is a fast tool to scrape links and titles from google search results using [asyncio](https://docs.python.org/3/library/asyncio.html) library which uses cooperative multitasking combined with [aiohttp](https://docs.aiohttp.org)  and with this tool you can extract links including their titles. This tool is also able to bypass restrictions imposed by providers
+**Godork** is a high-performance tool designed to scrape links and titles from Google search results using the [asyncio](https://docs.python.org/3/library/asyncio.html) library, which enables efficient cooperative multitasking. Combined with [aiohttp](https://docs.aiohttp.org), this tool allows you to quickly and reliably extract URLs along with their corresponding titles. Additionally, Godork is capable of bypassing restrictions imposed by network providers, ensuring uninterrupted access to search data
+
+## ✨ Why Godork?
+
+* ⚡ Blazing-fast performance using asynchronous HTTP requests (aiohttp)
+
+* 🔍 Automated dork execution with support for lists, batches, and single queries
+
+* 🌐 Proxy-ready: Bypass restrictions and stay anonymous with HTTP proxy integration
+
+* 🕶️ Headless browser mode with Selenium to defeat CAPTCHAs and JS-based blocks
+
+* 🔄 Self-updating via --update-tool flag and never run outdated tools again
+
+* 🐳 Docker-compatible: Seamlessly containerize and deploy in any environment
 
 ## Resources
 - [Requirements](#requirements)
 - [Installation](#installation)
-	- [from Pypi](#from-pypi)
-	- [from GitHub](#from-github)
+	- [Install with pip](#install-with-pip)
+	- [Or clone from GitHub](#or-clone-from-github)
 - [Options](#options)
-- [Usage](#usage)
-	- [Basic Usage](#basic-usage)
+- [Example Usage](#example-usage)
+  - [Basic dorking](#basic-dorking)
+  - [Batch mode](#batch-mode)
 - [Help & Bugs](#help--bugs)
 - [Contributors](#contributors-heart)
 - [License](#license)
@@ -37,7 +52,7 @@
 
 ## Requirements
 
-```
+```sh
 # This is required for the pydub library
 $ sudo apt install ffmpeg
 
@@ -60,13 +75,13 @@ $ sudo mv chromedriver /usr/bin
 
 **Godork** requires **python 3.8** or higher to install successfully
 
-### from Pypi
+### Install with pip:
 
 ```sh
 pip install godork
 ```
 
-### from Github
+### Or clone from GitHub:
 
 ```sh
 git clone https://github.com/thd3r/godork.git
@@ -76,25 +91,33 @@ python3 setup.py install
 
 ## Options
 
-Here are all the options it supports.
+| Option            | Type         | Description                             	      |
+|-------------------|--------------|------------------------------------------------|
+| -v, --version     | Flag         | displays the current version of godork |
+| -d, --dorks       | String       | single dork or file containing multiple dorks            |
+| -p, --proxy       | String       | http proxy to use with godork (e.g. http://127.0.0.1:8080) |
+| --debug           | Boolean      | show detailed logs and error for debugging |
+| --retries         | Integer      | retries when request is blocked (default: 40) |
+| --max-retries     | Integer      | max attempts to bypass protection mechanisms (default: 2) |
+| --no-headless     | Boolean      | run in graphical mode when bypassing |
+| --update-tool     | Boolean      | update godork to the latest version  |
 
-| Options             	| Description                                    	|
-|------------------	|------------------------------------------------	|
-| -d, --dorks       | single dork or file containing dorks            |
-| -p, --proxy       | http proxy to use with godork (eg http://127.0.0.1:8080) |
-| --no-headless     | run in graphical mode when bypassing |
-| --update-tools    | update godork to the latest version  |
+## Example Usage
 
-# Usage
-
-### Basic Usage
+### Basic dorking:
 
 ```sh
-godork --dorks site:*.com
+godork --dorks "intitle:index.of site:example.com"
 ```
 
 > [!WARNING]
 > Developers assume no liability and are not responsible for any issue or damage.
+
+### Batch mode:
+
+```sh
+godork --dorks dorks.txt --proxy http://127.0.0.1:8080 --no-headless
+```
 
 ## Help & Bugs
 
@@ -108,9 +131,9 @@ If you are still confused or found a bug, please [open the issue](https://github
 
 ## License
 
-Godork is distributed under [MIT License](https://github.com/thd3r/godork/blob/main/LICENSE.md).
+Licensed under the [MIT License](https://github.com/thd3r/godork/blob/main/LICENSE.md).
 
-<img src="https://img.shields.io/badge/license-MIT-000000.svg?style=for-the-badge">
+Contributions are welcome :) feel free to fork, suggest improvements, or submit pull requests.
 
 ## Support
 

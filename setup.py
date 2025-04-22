@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
-from v2.__init__ import __version__
+from services.version import CURRENT_VERSION
 
 setup(
     name='godork',
-    version=__version__,
+    version=CURRENT_VERSION,
     author='Thunder (@thd3r)',
     author_email='thd3r@proton.me',
-    description='Scrape Google search quickly',
+    description='Advanced & Fast Google Dorking Tool',
     packages=find_packages(),
     install_requires=[
         'bs4',
@@ -16,11 +16,12 @@ setup(
         'asyncio',
         'selenium',
         'SpeechRecognition',
-        'webdriver-manager'
+        'webdriver-manager',
+        'undetected-chromedriver',
     ],
     entry_points={
         'console_scripts': [
-            'godork = v2.godork:main'
+            'godork = godork:main'
         ]
     },
     license='MIT',
