@@ -15,6 +15,7 @@ setup(
         'aiohttp',
         'asyncio',
         'selenium',
+        'setuptools',
         'SpeechRecognition',
         'webdriver-manager',
         'undetected-chromedriver',
