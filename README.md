@@ -85,7 +85,7 @@ pip install godork
 
 ```sh
 git clone https://github.com/thd3r/godork.git
-cd codork
+cd godork
 python3 setup.py install
 ```
 
