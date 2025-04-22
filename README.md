@@ -94,14 +94,14 @@ python3 setup.py install
 
 | Option            | Type         | Description                             	      |
 |-------------------|--------------|------------------------------------------------|
-| -v, --version     | Flag         | displays the current version of godork |
-| -d, --dorks       | String       | single dork or file containing multiple dorks            |
-| -p, --proxy       | String       | http proxy to use with godork (e.g. http://127.0.0.1:8080) |
-| --debug           | Boolean      | show detailed logs and error for debugging |
-| --retries         | Integer      | retries when request is blocked (default: 40) |
-| --max-retries     | Integer      | max attempts to bypass protection mechanisms (default: 2) |
-| --no-headless     | Boolean      | run in graphical mode when bypassing |
-| --update-tool     | Boolean      | update godork to the latest version  |
+| -v, --version     | flag         | displays the current version of godork |
+| -d, --dorks       | string       | single dork or file containing multiple dorks            |
+| -p, --proxy       | string       | http proxy to use with godork (e.g. http://127.0.0.1:8080) |
+| --debug           | boolean      | show detailed logs and error for debugging |
+| --retries         | integer      | retries when request is blocked (default: 40) |
+| --max-retries     | integer      | max attempts to bypass protection mechanisms (default: 2) |
+| --no-headless     | boolean      | run in graphical mode when bypassing |
+| --update-tool     | boolean      | update godork to the latest version  |
 
 ## Example Usage
 
