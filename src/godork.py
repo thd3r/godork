@@ -4,11 +4,11 @@ import asyncio
 
 from pathlib import Path
 
-from utils.colors import Bgcolor
-from helpers.console import Console
-from helpers.options import OptionParser
-from services.update import UpdateTool
-from services.scrape import Scraper
+from src.utils.colors import Bgcolor
+from src.helpers.console import Console
+from src.helpers.options import OptionParser
+from src.services.update import UpdateTool
+from src.services.scrape import Scraper
 
 def main():
     BASE_DIR = Path(__file__).resolve().parent
