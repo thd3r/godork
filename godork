@@ -10,4 +10,4 @@ else
     exit 1
 fi
 
-$PYTHON_EXEC src/godork.py "$@"
+$PYTHON_EXEC src/godork-cli.py "$@"
