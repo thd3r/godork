@@ -1,7 +1,7 @@
 import json
 import requests
 
-from services.requester import Requester
+from src.services.requester import Requester
 
 """
 The release_version() function is a simple yet effective mechanism for retrieving the latest release version of a tool from GitHub. 

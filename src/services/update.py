@@ -4,10 +4,10 @@ import subprocess
 
 from pathlib import Path
 
-from utils.colors import Bgcolor
-from utils.banner import print_banner
-from helpers.console import Console
-from services.version import CURRENT_VERSION, release_version
+from src.utils.colors import Bgcolor
+from src.utils.banner import print_banner
+from src.helpers.console import Console
+from src.services.version import CURRENT_VERSION, release_version
 
 class UpdateTool:
 

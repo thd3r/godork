@@ -5,14 +5,14 @@ import random
 
 from aiohttp import ClientSession, TCPConnector
 
-from utils.colors import Bgcolor
-from utils.exceptions import GodorkNoData, GodorkMaxRetries
-from utils.parse import get_query, get_page_num, set_page_num
-from helpers.console import Console
-from helpers.reports import Reports
-from helpers.extractor import extract_pages, extract_data
-from services.requester import Requester
-from services.recaptcha import RecaptchaBypass
+from src.utils.colors import Bgcolor
+from src.utils.exceptions import GodorkNoData, GodorkMaxRetries
+from src.utils.parse import get_query, get_page_num, set_page_num
+from src.helpers.console import Console
+from src.helpers.reports import Reports
+from src.helpers.extractor import extract_pages, extract_data
+from src.services.requester import Requester
+from src.services.recaptcha import RecaptchaBypass
 
 class Scraper:
 

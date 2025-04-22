@@ -1,4 +1,4 @@
-from services.version import CURRENT_VERSION
+from src.services.version import CURRENT_VERSION
 
 """
 The print_banner function is a simple yet visually impactful component designed to display a startup banner when the program is launched. 
