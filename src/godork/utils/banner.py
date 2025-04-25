@@ -9,11 +9,11 @@ Purpose:
     * The current version of the tool (CURRENT_VERSION)
     * The status of the tool (e.g., latest, outdated, or other custom labels)
 
+This shows a banner when the program starts.
+
 """
 
 def print_banner(status, version):
-    # This shows a banner when the program starts.
-    
     banner = rf"""
                              __         __  
                ___ ____  ___/ /__  ____/ /__
