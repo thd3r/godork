@@ -48,16 +48,16 @@ Usage Scenario:
 
 """
 
-CURRENT_VERSION = "v2.5.7"
+CURRENT_VERSION = "v2.6.2"
 
 def check_version():
     release_vers, _ = release_version()
     if release_vers is not None and CURRENT_VERSION < release_vers:
-        print_banner(status=f"{Bgcolor.RED}outdated{Bgcolor.DEFAULT}")
+        print_banner(status=f"{Bgcolor.RED}outdated{Bgcolor.DEFAULT}", version=CURRENT_VERSION)
     if release_vers is not None and CURRENT_VERSION == release_vers:
-        print_banner(status=f"{Bgcolor.GREEN}latest{Bgcolor.DEFAULT}")
+        print_banner(status=f"{Bgcolor.GREEN}latest{Bgcolor.DEFAULT}", version=CURRENT_VERSION)
     if release_vers is None:
-        print_banner(status=f"{Bgcolor.RED}outdated{Bgcolor.DEFAULT}")
+        print_banner(status=f"{Bgcolor.RED}outdated{Bgcolor.DEFAULT}", version=CURRENT_VERSION)
 
 def release_version():
     session = requests.session()

@@ -1,5 +1,3 @@
-from ..services.version import CURRENT_VERSION
-
 """
 The print_banner function is a simple yet visually impactful component designed to display a startup banner when the program is launched. 
 It provides users with immediate version information and the current status of the tool in an aesthetically styled format using ASCII art.
@@ -13,13 +11,13 @@ Purpose:
 
 """
 
-def print_banner(status):
+def print_banner(status, version):
     # This shows a banner when the program starts.
     
     banner = rf"""
                              __         __  
                ___ ____  ___/ /__  ____/ /__
-              / _ `/ _ \/ _  / _ \/ __/  '_/  {CURRENT_VERSION}
+              / _ `/ _ \/ _  / _ \/ __/  '_/  {version}
               \_, /\___/\_,_/\___/_/ /_/\_\    {status}
              /___/                                                                                                            
                         thd3r & societyprojects                       
