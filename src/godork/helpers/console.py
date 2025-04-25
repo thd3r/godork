@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from src.utils.colors import Bgcolor
+from ..utils.colors import Bgcolor
 
 class Console:
 

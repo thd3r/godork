@@ -1,6 +1,6 @@
 import undetected_chromedriver as uc
 
-from src.utils.user_agents import random_agent
+from ..utils.user_agents import random_agent
 
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver import ChromeService

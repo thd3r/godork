@@ -2,7 +2,7 @@ import os
 import json
 
 from datetime import datetime
-from src.helpers.console import Console
+from .console import Console
 
 class Reports:
 

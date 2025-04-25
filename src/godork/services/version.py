@@ -1,7 +1,9 @@
 import json
 import requests
 
-from src.services.requester import Requester
+from .requester import Requester
+from ..utils.banner import print_banner
+from ..utils.colors import Bgcolor
 
 """
 The release_version() function is a simple yet effective mechanism for retrieving the latest release version of a tool from GitHub. 
@@ -46,7 +48,16 @@ Usage Scenario:
 
 """
 
-CURRENT_VERSION = "v2.5.6"
+CURRENT_VERSION = "v2.5.7"
+
+def check_version():
+    release_vers, _ = release_version()
+    if release_vers is not None and CURRENT_VERSION < release_vers:
+        print_banner(status=f"{Bgcolor.RED}outdated{Bgcolor.DEFAULT}")
+    if release_vers is not None and CURRENT_VERSION == release_vers:
+        print_banner(status=f"{Bgcolor.GREEN}latest{Bgcolor.DEFAULT}")
+    if release_vers is None:
+        print_banner(status=f"{Bgcolor.RED}outdated{Bgcolor.DEFAULT}")
 
 def release_version():
     session = requests.session()

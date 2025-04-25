@@ -8,10 +8,10 @@ import speech_recognition
 from tempfile import gettempdir
 from datetime import datetime
 
-from src.helpers.console import Console
-from src.helpers.reports import Reports
-from src.utils.colors import Bgcolor
-from src.utils.exceptions import GodorkException, GodorkTimeout
+from ..helpers.console import Console
+from ..helpers.reports import Reports
+from ..utils.colors import Bgcolor
+from ..utils.exceptions import GodorkException, GodorkTimeout
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys

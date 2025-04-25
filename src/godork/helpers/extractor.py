@@ -1,9 +1,9 @@
 import re
 
-from src.utils.colors import Bgcolor
-from src.utils.parse import no_data
-from src.helpers.console import Console
-from src.utils.exceptions import GodorkNoData
+from ..utils.colors import Bgcolor
+from ..utils.parse import no_data
+from .console import Console
+from ..utils.exceptions import GodorkNoData
 
 from urllib.parse import urlparse, unquote
 from datetime import datetime

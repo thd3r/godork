@@ -1,4 +1,4 @@
-from src.utils.user_agents import random_agent
+from ..utils.user_agents import random_agent
 
 class Requester:
 

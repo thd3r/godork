@@ -75,11 +75,5 @@ class OptionParser:
             default=True,
             help="run in graphical mode when bypassing"
         )
-        parser.add_argument(
-            "--update-tool",
-            action="store_true",
-            default=False,
-            help="update godork to the latest version"
-        )
 
         return parser.parse_args()

@@ -13,7 +13,7 @@
 ```sh
                 __         __  
   ___ ____  ___/ /__  ____/ /__
- / _ `/ _ \/ _  / _ \/ __/  '_/  v2.5.6
+ / _ `/ _ \/ _  / _ \/ __/  '_/  v2.5.7
  \_, /\___/\_,_/\___/_/ /_/\_\    latest
 /___/                                                                                                            
            thd3r & societyprojects
@@ -30,8 +30,6 @@
 * 🌐 Proxy-ready: Bypass restrictions and stay anonymous with HTTP proxy integration
 
 * 🕶️ Headless browser mode with Selenium to defeat CAPTCHAs and JS-based blocks
-
-* 🔄 Self-updating via --update-tool flag and never run outdated tools again
 
 * 🐳 Docker-compatible: Seamlessly containerize and deploy in any environment
 

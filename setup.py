@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-from src.services.version import CURRENT_VERSION
+from src.godork.services.version import CURRENT_VERSION
 
 setup(
     name='godork',
@@ -7,8 +7,8 @@ setup(
     author='Thunder (@thd3r)',
     author_email='thd3r@proton.me',
     description='Advanced & Fast Google Dorking Tool',
-    packages=find_packages(),
-    include_package_data=True,
+    packages=find_packages(where='src'),
+    package_dir={'godork': 'src/godork'},
     install_requires=[
         'bs4',
         'rich',
@@ -24,7 +24,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'godork = src.godork:main'
+            'godork = godork.godork:main'
         ]
     },
     license='MIT',

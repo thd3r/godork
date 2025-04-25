@@ -2,25 +2,16 @@
 
 import asyncio
 
-from pathlib import Path
-
-from src.utils.colors import Bgcolor
-from src.helpers.console import Console
-from src.helpers.options import OptionParser
-from src.services.update import UpdateTool
-from src.services.scrape import Scraper
+from .utils.colors import Bgcolor
+from .helpers.console import Console
+from .helpers.options import OptionParser
+from .services.version import check_version
+from .services.scrape import Scraper
 
 def main():
-    BASE_DIR = Path(__file__).resolve().parent
-    
-    updater = UpdateTool()
-    updater.check_version()
+    check_version()
 
     args = OptionParser.argument_parser()
-
-    if args.update_tool:
-        updater.update_tool(BASE_DIR)
-        return
 
     if len(args.dorks) < 1:
         print(f"""{Bgcolor.RED}error{Bgcolor.DEFAULT}: the following required arguments were not provided:
