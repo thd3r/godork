@@ -24,7 +24,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'godork = godork.godork:main'
+            'godork = godorks.godork:main'
         ]
     },
     license='MIT',
