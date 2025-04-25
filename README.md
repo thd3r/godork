@@ -13,7 +13,7 @@
 ```sh
                 __         __  
   ___ ____  ___/ /__  ____/ /__
- / _ `/ _ \/ _  / _ \/ __/  '_/  v2.5.5
+ / _ `/ _ \/ _  / _ \/ __/  '_/  v2.5.6
  \_, /\___/\_,_/\___/_/ /_/\_\    latest
 /___/                                                                                                            
            thd3r & societyprojects
@@ -39,7 +39,6 @@
 - [Requirements](#requirements)
 - [Installation](#installation)
 	- [Install with pip](#install-with-pip)
-	- [Or clone from GitHub](#or-clone-from-github)
 - [Options](#options)
 - [Example Usage](#example-usage)
   - [Basic dorking](#basic-dorking)
@@ -79,15 +78,6 @@ $ sudo mv chromedriver /usr/bin
 
 ```sh
 pip install godork
-```
-
-### Or clone from GitHub:
-
-```sh
-git clone https://github.com/thd3r/godork.git
-cd godork
-pip install -r requirements.txt
-python3 setup.py install
 ```
 
 ## Options

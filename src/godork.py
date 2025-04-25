@@ -17,7 +17,6 @@ def main():
     updater.check_version()
 
     args = OptionParser.argument_parser()
-    scrape = Scraper(dorks=args.dorks, debug=args.debug, proxy=args.proxy, retries=args.retries, max_retries=args.max_retries, headless_mode=args.no_headless)
 
     if args.update_tool:
         updater.update_tool(BASE_DIR)
@@ -31,6 +30,15 @@ usage: godork --dorks <DORKS>
 
 For more information, try 'godork --help'""")
         return
+    
+    scrape = Scraper(
+        dorks=args.dorks,  
+        proxy=args.proxy,
+        debug=args.debug,
+        retries=args.retries,
+        max_retries=args.max_retries, 
+        headless_mode=args.no_headless
+    )
     
     try:
         asyncio.run(scrape.run_with_async())

@@ -50,12 +50,6 @@ class OptionParser:
             help="http proxy to use with godork (e.g. http://127.0.0.1:8080)"
         )
         parser.add_argument(
-            "--debug",
-            action="store_true",
-            default=False,
-            help="show detailed logs and error for debugging"
-        )
-        parser.add_argument(
             "--retries",
             type=int,
             action="store",
@@ -68,6 +62,12 @@ class OptionParser:
             action="store",
             default=2,
             help="max attempts to bypass protection mechanisms (default: 2)"
+        )
+        parser.add_argument(
+            "--debug",
+            action="store_true",
+            default=False,
+            help="show detailed logs and error for debugging"
         )
         parser.add_argument(
             "--no-headless",

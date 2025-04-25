@@ -8,7 +8,6 @@ import speech_recognition
 from tempfile import gettempdir
 from datetime import datetime
 
-from src.services.driver import SeleniumDriver
 from src.helpers.console import Console
 from src.helpers.reports import Reports
 from src.utils.colors import Bgcolor
@@ -189,7 +188,7 @@ class RecaptchaBypass:
         self.reports.logs_report("debug", data="Waiting briefly for reCAPTCHA to process the input")
         self.console.debugging(self.debug, msg="Waiting briefly for reCAPTCHA to process the input")
 
-        time.sleep(4)
+        time.sleep(3)
 
         if self.is_blocked(driver):
             return
@@ -271,19 +270,11 @@ class RecaptchaBypass:
             self.reports.logs_report("error", data="Unexpected response comes from search engines")
             self.console.log_print("error", msg="Unexpected response comes from search engines")
     
-    async def solve_captcha(self, url):
+    async def solve_captcha(self, driver, url):
         self.reports.logs_report("debug", data=f"Bad URL {url}")
         self.console.debugging(self.debug, msg=f"Bad URL {url}")
 
-        with SeleniumDriver(headless_mode=self.headless) as driver:
-            self.wait = WebDriverWait(driver, 5)
+        self.wait = WebDriverWait(driver, 5)
 
-            try:
-                driver.get(url)
-                await self.recaptcha_service(driver)
-                return driver
-            except KeyboardInterrupt:
-                driver.quit()
-            except (GodorkException, GodorkTimeout) as err:
-                self.reports.logs_report("error", data=f"Failed to bypass v2 protection. {Bgcolor.BLUE}reason{Bgcolor.DEFAULT}:{err}")
-                self.console.log_print("error", msg=f"Failed to bypass v2 protection. {Bgcolor.BLUE}reason{Bgcolor.DEFAULT}:{err}")
+        driver.get(url)
+        await self.recaptcha_service(driver)

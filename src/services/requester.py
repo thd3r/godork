@@ -45,7 +45,6 @@ class Requester:
             "Accept-Language": "en-US,en;q=0.5",
             "Referer": "https://www.google.com/",
         }
-        self.response_dict = {}
 
     def reqwest(self, session, method, url, **kwargs):
         response = session.request(
@@ -71,5 +70,5 @@ class Requester:
             headers=self.headers if not kwargs.get("headers") else kwargs.get("headers"),
             allow_redirects=kwargs.get("redirects")
         ) as response:
-            self.response_dict.update({"body": await response.text()})
-            return response
+            body = await response.text()
+            return response, body

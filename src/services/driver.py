@@ -5,6 +5,8 @@ from src.utils.user_agents import random_agent
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver import ChromeService
 
+CHROME_DRIVER_PATH = ChromeDriverManager().install() 
+
 class SeleniumDriver:
 
     """
@@ -42,7 +44,7 @@ class SeleniumDriver:
         self.driver = None
 
     def __enter__(self):
-        chrome_service = ChromeService(ChromeDriverManager().install())
+        chrome_service = ChromeService(CHROME_DRIVER_PATH)
 
         options = uc.ChromeOptions()
         options.add_argument("--disable-blink-features=AutomationControlled")
@@ -60,4 +62,5 @@ class SeleniumDriver:
         return self.driver
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        pass
+        if self.driver:
+            self.driver.quit()

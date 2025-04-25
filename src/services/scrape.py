@@ -2,16 +2,18 @@ import re
 import os
 import time
 import random
+import psutil
 
 from aiohttp import ClientSession, TCPConnector
 
 from src.utils.colors import Bgcolor
-from src.utils.exceptions import GodorkNoData, GodorkMaxRetries
+from src.utils.exceptions import GodorkException, GodorkTimeout, GodorkNoData, GodorkMaxRetries
 from src.utils.parse import get_query, get_page_num, set_page_num
 from src.helpers.console import Console
 from src.helpers.reports import Reports
 from src.helpers.extractor import extract_pages, extract_data
 from src.services.requester import Requester
+from src.services.driver import SeleniumDriver
 from src.services.recaptcha import RecaptchaBypass
 
 class Scraper:
@@ -79,12 +81,12 @@ class Scraper:
 
     """
 
-    def __init__(self, dorks, debug, proxy, retries, max_retries, headless_mode):
+    def __init__(self, dorks, proxy, debug, retries, max_retries, headless_mode):
         self.base_url = "https://www.google.com/search"
     
         self.dorks = dorks.strip().splitlines() if not os.path.isfile(dorks) else open(dorks, 'r').read().strip().splitlines()
-        self.debug = debug
         self.proxy = proxy
+        self.debug = debug
         self.retries = retries
         self.max_retries = max_retries
         self.headless = headless_mode
@@ -93,6 +95,10 @@ class Scraper:
         self.reports = Reports()
         self.requester = Requester()
         self.recaptcha_service = RecaptchaBypass(debug, headless_mode=headless_mode)
+
+    def get_memory_usage(self):
+        process = psutil.Process(os.getpid())
+        print(self.console.text_format("info", msg=f"Memory usage: {process.memory_info().rss / 1024 ** 2:.2f} MB"))
 
     def params(self, query, page):
         return {
@@ -111,29 +117,34 @@ class Scraper:
         self.reports.logs_report("info", data="Initiating v2 bypass...")
         self.console.log_print("info", msg="Initiating v2 bypass...")
 
-        response = await self.recaptcha_service.solve_captcha(url)
-
-        if response is not None:
-            target_url = response.current_url
-            data_html = response.page_source
-
+        with SeleniumDriver(headless_mode=self.headless) as driver:
             try:
-                last_page = extract_pages(data_html)
-                self.reports.logs_report("info", data=f"Total known pages: {last_page}")
-                self.console.log_print("info", msg=f"Total known pages: {last_page}")
-            except IndexError:
-                pass
+                await self.recaptcha_service.solve_captcha(driver, url)
+
+                target_url = driver.current_url
+                data_html = driver.page_source
+
+                try:
+                    last_page = extract_pages(data_html)
+                    self.reports.logs_report("info", data=f"Total known pages: {last_page}")
+                    self.console.log_print("info", msg=f"Total known pages: {last_page}")
+                except IndexError:
+                    pass
+                
+                extract_data(data_html, reports=self.reports, metadata={"query": get_query(url), "num_page": set_page_num(num_page)})
+
+                await self.fetch_urls(session, url=target_url, params=None)
             
-            extract_data(data_html, reports=self.reports, metadata={"query": get_query(url), "num_page": set_page_num(num_page)})
+            except (GodorkException, GodorkTimeout) as err:
+                self.reports.logs_report("error", data=f"Failed to bypass v2 protection. {Bgcolor.BLUE}reason{Bgcolor.DEFAULT}:{err}")
+                self.console.log_print("error", msg=f"Failed to bypass v2 protection. {Bgcolor.BLUE}reason{Bgcolor.DEFAULT}:{err}")
 
-            await self.fetch_urls(session, url=target_url, params=None)
+                self.reports.logs_report("info", data=f"Retrying bypass of v2 protection (attempt: {retry_count+1}) on page {set_page_num(num_page)}")
+                self.console.log_print("info", msg=f"Retrying bypass of v2 protection (attempt: {retry_count+1}) on page {set_page_num(num_page)}")
 
-            response.quit()
-        else:
-            self.reports.logs_report("info", data=f"Retrying bypass of v2 protection (attempt: {retry_count+1}) on page {set_page_num(num_page)}")
-            self.console.log_print("info", msg=f"Retrying bypass of v2 protection (attempt: {retry_count+1}) on page {set_page_num(num_page)}")
-
-            await self.reuse_connection(session, url, num_page=num_page, retry_count=retry_count + 1)
+                await self.reuse_connection(session, url, num_page=num_page, retry_count=retry_count + 1)
+            finally:
+                driver.quit()
 
     async def fetch_urls(self, session, url, **kwargs):
         num_page = kwargs.get("params")["start"] if kwargs.get("params") is not None else get_page_num(url)
@@ -141,7 +152,7 @@ class Scraper:
 
         while True:
             i += 1
-            response = await self.requester.aioreqwest(
+            response, data_html = await self.requester.aioreqwest(
                 session,
                 method="GET",
                 url=url,
@@ -150,26 +161,26 @@ class Scraper:
                 timeout=10,
                 redirects=False
             )
-
+            
             self.reports.logs_report("debug", data=f"Initiating request to {str(response.url)}")
             self.console.debugging(self.debug, msg=f"Initiating request to {str(response.url)}")
 
             self.reports.logs_report("debug", data=f"Getting response status {response.status}")
             self.console.debugging(self.debug, msg=f"Getting response status {response.status}")
 
-            if "Google Search" not in re.findall("<title>(.*?)</title>", self.requester.response_dict["body"]):
+            if "Google Search" not in re.findall("<title>(.*?)</title>", data_html):
 
                 if response.status == 200:
                     try:
-                        last_page = extract_pages(self.requester.response_dict["body"])
+                        last_page = extract_pages(data_html)
                         self.reports.logs_report("info", data=f"Total known pages: {last_page}")
                         self.console.log_print("info", msg=f"Total known pages: {last_page}")
                     except IndexError:
                         pass
 
-                    extract_data(self.requester.response_dict["body"], reports=self.reports, metadata={"query": get_query(response.url), "num_page": set_page_num(num_page)})
+                    extract_data(data_html, reports=self.reports, metadata={"query": get_query(response.url), "num_page": set_page_num(num_page)})
 
-                if 300 <= response.status <= 399 and "https://www.google.com/sorry/index" in response.headers["Location"]:
+                if 300 <= response.status <= 399 and "https://www.google.com/sorry/index" in response.headers.get("Location"):
                     url_redirection = response.headers["Location"]
 
                     self.reports.logs_report("debug", data=f"Getting the redirect URL {url_redirection}")
@@ -213,6 +224,9 @@ class Scraper:
                 except GodorkMaxRetries as err:
                     self.reports.logs_report("warning", data=err)
                     self.console.log_print("warning", msg=err)
+        
+                    self.reports.logs_report("info", data="Try using the `--no-headless` option to make changes")
+                    self.console.log_print("info", msg="Try using the `--no-headless` option to make changes")
                     break
                 except GodorkNoData as err:
                     self.reports.logs_report("info", data=err)
@@ -236,4 +250,5 @@ class Scraper:
             finally:
                 await session.close()
 
-        self.console.log_print("info", msg="Check the report in {}".format(self.reports.base_dir))
+        print(self.console.text_format("info", msg="Report saved to {}".format(self.reports.base_dir)))
+        self.get_memory_usage()

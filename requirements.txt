@@ -1,6 +1,7 @@
 bs4
 rich
 pydub
+psutil
 aiohttp
 asyncio
 selenium
