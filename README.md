@@ -13,7 +13,7 @@
 ```sh
                 __         __  
   ___ ____  ___/ /__  ____/ /__
- / _ `/ _ \/ _  / _ \/ __/  '_/  v2.5.7
+ / _ `/ _ \/ _  / _ \/ __/  '_/  v2.6.2
  \_, /\___/\_,_/\___/_/ /_/\_\    latest
 /___/                                                                                                            
            thd3r & societyprojects
@@ -85,11 +85,10 @@ pip install godork
 | -v, --version     | flag         | displays the current version of godork |
 | -d, --dorks       | string       | single dork or file containing multiple dorks            |
 | -p, --proxy       | string       | http proxy to use with godork (e.g. http://127.0.0.1:8080) |
-| --debug           | boolean      | show detailed logs and error for debugging |
 | --retries         | integer      | retries when request is blocked (default: 40) |
 | --max-retries     | integer      | max attempts to bypass protection mechanisms (default: 2) |
+| --debug           | boolean      | show detailed logs and error for debugging |
 | --no-headless     | boolean      | run in graphical mode when bypassing |
-| --update-tool     | boolean      | update godork to the latest version  |
 
 ## Example Usage
 
