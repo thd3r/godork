@@ -1,9 +1,16 @@
+import re
+
 from setuptools import setup, find_packages
-from src.godork.services.version import CURRENT_VERSION
+
+version = re.search(
+    r'^CURRENT_VERSION\s*=\s*"(.*)"',
+    open('src/godork/services/version.py').read(),
+    re.M
+).group(1)
 
 setup(
     name='godork',
-    version=CURRENT_VERSION,
+    version=version,
     author='Thunder (@thd3r)',
     author_email='thd3r@proton.me',
     description='Advanced & Fast Google Dorking Tool',
